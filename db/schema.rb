@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_16_223123) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_19_145123) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "cpf"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_16_223123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cpf"], name: "index_users_on_cpf", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   create_table "usuarios", force: :cascade do |t|
