@@ -15,7 +15,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:cpf,:name,:telephone,:email)
+        params.require(:user).permit(:cpf, :name, :telephone, :email)
       end
     end
   end
