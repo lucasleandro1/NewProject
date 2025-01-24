@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :user do
-    name { "Lucas" }
-    cpf { "12345679845" }
-    telephone { "87992109391" }
-    email { "lucas@gmail.com" }
+    name { Faker::Name.name }
+    email { Faker::Internet.unique.email }
+    cpf { Faker::Number.unique.number(digits: 11) }
+    telephone { Faker::PhoneNumber.phone_number }
   end
 end
