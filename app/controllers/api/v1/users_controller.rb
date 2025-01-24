@@ -2,7 +2,7 @@ module Api
   module V1
     class UsersController < ApplicationController
       skip_before_action :verify_authenticity_token
-      
+
       def index
         instance_list = UserManager::List.new.call
         if instance_list[:success]
