@@ -1,6 +1,5 @@
 module UserManager
   class List
-
     def call
       response(scope)
     rescue StandardError => error
