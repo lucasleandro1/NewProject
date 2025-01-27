@@ -30,19 +30,10 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "POST #create" do
     subject(:post_create) { post :create, params: params }
 
-    let(:params) do
-      {
-        user: {
-          cpf: "98765432165",
-          name: "Lucas",
-          telephone: "87992109391",
-          email: "Lucas_leandro@gmail.com"
-        }
-      }
-    end
+    let(:params) { { user: attributes_for(:user) } }
 
-    context "when service creates user successfully" do
-      it "returns a created status" do
+    context "when create user successfully" do
+      it "created status" do
         user = build(:user)
         allow(UserManager::Creator).to receive_message_chain(:new, :call).and_return({ success: true, resource: user })
         post_create
@@ -51,7 +42,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
 
-    context "when service fails to create user" do
+    context "when fails create user" do
       it "returns an unprocessable entity" do
         allow(UserManager::Creator).to receive_message_chain(:new, :call).and_return({ success: false, error_message: "Invalid data" })
         post_create
